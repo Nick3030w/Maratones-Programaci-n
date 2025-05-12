@@ -32,5 +32,6 @@ public class ejercicio4 {
         }
         // Mostrar el valor
         System.out.println("El mayor numero es: " + mayorNumero);
+        lector.close();
     }
 }

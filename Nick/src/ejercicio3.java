@@ -31,6 +31,6 @@ public class ejercicio3 {
 
         // Mostrar la edad
         System.out.println("La edad de la persona es: " + edad + " años.");
-
+        scanner.close();
     }
 }

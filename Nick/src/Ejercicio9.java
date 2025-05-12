@@ -21,5 +21,6 @@ public class Ejercicio9 {
             }
         }
         System.out.println("La suma de las cifras es: " + suma);
+        lector.close();
     }
 }
