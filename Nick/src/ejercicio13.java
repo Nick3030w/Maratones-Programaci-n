@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * Dado un listado de números verifique si la suma de los números impares es un
@@ -13,77 +12,77 @@ import java.util.Scanner;
 public class ejercicio13 {
 
     public static void main(String[] args) {
-        Scanner lector = new Scanner(System.in);
-        System.out.println("Ingrese un listado de numeros separados por espacios");
-        String listadoDeNumeros = lector.nextLine();
-        String[] lista = listadoDeNumeros.split(" ");
-        List<Integer> numeros = new ArrayList<>();
+        int[] numeros = { 2, 4, 3, 5, 4, 3, 2, 3, 4, 12 };
+    }
+
+    /**
+     * Metodo que verifica la suma de numeros impares dentro de una lista de numeros
+     * 
+     * @param numeros
+     */
+    private static void verificarSumaImpares(int[] numeros) {
         int sumaImpares = 0;
-
-        // Convertir los numeros de String a Integer
-        for (String numString : lista) {
-            try {
-                numeros.add(Integer.parseInt(numString));
-            } catch (Exception e) {
-                System.out.println("Entrada invalida, solo se aceptan numeros enteros");
-                return;
-            }
-        }
-
-        // Filtrar impares y calcular su suma
-        for (Integer num : numeros) {
-            if (num % 2 != 0) {// verificar si es par
+        for (int num : numeros) {
+            if (num % 2 != 0) { // verifica si el numero es impar
                 sumaImpares += num;
             }
         }
-        System.out.println("Suma de impares: " + sumaImpares);
+        System.out.println("La suma de numeros impares es: " + sumaImpares); // muestra la suma de los impares
+        // Verificar si la suma es un numero primo
 
         if (esPrimo(sumaImpares)) {
-            System.out.println("La suma de impares( " + sumaImpares + " ) es un numero primo. ");
-
+            System.out.println("la suma " + sumaImpares + " Es un numero primo. ");
         } else {
-            System.out.println("La suma de impares( " + sumaImpares + " ) NO es un numero primo. ");
+            System.out.println("La suma " + sumaImpares + " No es un numero primo");
+
         }
+        // Encontrar los numeros primos entre los que se encuentra la suma de los
+        // numeros
 
-        // Encontrar los numeros primos mas cercanos
-        int primoAnterior = encontrarPrimoAnterior(sumaImpares);
-        int primoPosterior = encontrarPrimoPosterior(sumaImpares);
+        List<Integer> primosCercanos = encontrarPrimosCercanos(sumaImpares);
 
-        System.out.println("el numero primo anterior mas cercano es: " + primoAnterior
-                + " y el numero primo posterior mas cercano es: " + primoPosterior);
+        System.out.println("Se encuentra entre los primos " + primosCercanos.get(0) + " y " + primosCercanos.get(1));
 
-        lector.close();
+    }
+
+    /**
+     * Metodo para encontrar los primos mas cercanos de un numero
+     * 
+     * @param sumaImpares
+     * @return
+     */
+    private static List<Integer> encontrarPrimosCercanos(int numero) {
+        List<Integer> primosCercanos = new ArrayList<>();
+
+        if (numero < 2) {// Si el numero es menos que dos, el unico numero primo cercano es el 2
+            primosCercanos.add(2);
+            return primosCercanos;
+        }
+        int primoMenor = numero - 1;
+
+        return primosCercanos;
     }
 
     /**
      * Metodo para verificar si un numero es primo
      * 
-     * @param num
+     * @param numero
      * @return
      */
-
-    public static boolean esPrimo(int num) {
-        return true;
-    }
-
-    /**
-     * Metodo para encontrar el primo anterior mas cercano
-     * 
-     * @param num
-     * @return
-     */
-    public static int encontrarPrimoAnterior(int num) {
-        return 0;
-    }
-
-    /**
-     * Metodo para encontrar el numero primo posterior mas cercano
-     * 
-     * @param num
-     * @return
-     */
-    public static int encontrarPrimoPosterior(int num) {
-        return num;
-
+    private static boolean esPrimo(int numero) {
+        if (numero <= 1) {
+            return false;
+        }
+        if (numero == 2) {// 2 es el unico numero par primo
+            return true;
+        }
+        // Solo verifica divisores impares, solo verifica hasta la raiz del numero para
+        // reducir complejidad y si existe cualquier divisor no es un numero primo
+        for (int i = 3; i < Math.sqrt(numero); i += 2) {
+            if (numero % i == 0) {// Verifica si es divisible por el numero
+                return false;
+            }
+        }
+        return true;// Si pasa por todo el metodo significa que si es primo
     }
 }
