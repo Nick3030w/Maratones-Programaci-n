@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Dado un listado de números verifique si la suma de los números impares es un
@@ -7,12 +8,35 @@ import java.util.List;
  * primo, en caso contrario determine entre qué números primos se encuentra.
  *
  * @author Nick3030w
+ * 
  */
-
 public class ejercicio13 {
 
     public static void main(String[] args) {
-        int[] numeros = { 2, 4, 3, 5, 4, 3, 2, 3, 4, 12 };
+        Scanner lector = new Scanner(System.in);
+        System.out.println("Ingrese la cantidad de numeros: ");
+        int cantidad = lector.nextInt();
+        System.out.println("Ingrese los numeros uno por uno: ");
+        int[] numeros = new int[cantidad];
+        for (int i = 0; i < cantidad; i++) {
+            numeros[i] = lector.nextInt();
+        }
+        System.out.println("La suma de numeros impares es: " + sumaNumerosImpares(numeros)); // muestra la suma de los
+                                                                                             // impares
+        // Verificar si la suma es un numero primo
+
+        if (esPrimo(sumaNumerosImpares(numeros))) {
+            System.out.println("la suma " + sumaNumerosImpares(numeros) + " Es un numero primo. ");
+        } else {
+            System.out.println("La suma " + sumaNumerosImpares(numeros) + " No es un numero primo");
+
+        }
+        List<Integer> primosCercanos = encontrarPrimosCercanos(sumaNumerosImpares(numeros));
+
+        System.out.println(sumaNumerosImpares(numeros) + " Se encuentra entre los primos " + primosCercanos.get(0)
+                + " y " + primosCercanos.get(1));
+
+        lector.close();
     }
 
     /**
@@ -20,28 +44,15 @@ public class ejercicio13 {
      * 
      * @param numeros
      */
-    private static void verificarSumaImpares(int[] numeros) {
+    private static int sumaNumerosImpares(int[] numeros) {
         int sumaImpares = 0;
         for (int num : numeros) {
             if (num % 2 != 0) { // verifica si el numero es impar
                 sumaImpares += num;
             }
         }
-        System.out.println("La suma de numeros impares es: " + sumaImpares); // muestra la suma de los impares
-        // Verificar si la suma es un numero primo
 
-        if (esPrimo(sumaImpares)) {
-            System.out.println("la suma " + sumaImpares + " Es un numero primo. ");
-        } else {
-            System.out.println("La suma " + sumaImpares + " No es un numero primo");
-
-        }
-        // Encontrar los numeros primos entre los que se encuentra la suma de los
-        // numeros
-
-        List<Integer> primosCercanos = encontrarPrimosCercanos(sumaImpares);
-
-        System.out.println("Se encuentra entre los primos " + primosCercanos.get(0) + " y " + primosCercanos.get(1));
+        return sumaImpares;
 
     }
 
@@ -59,6 +70,23 @@ public class ejercicio13 {
             return primosCercanos;
         }
         int primoMenor = numero - 1;
+        // Encontrar el primo inmediatamente menor
+        // Si el numero-1 es mayor o igual a 2 y no es primo entonces paso al anterior
+        while (primoMenor >= 2 && !esPrimo(primoMenor)) {
+            primoMenor--;
+        }
+
+        // Encontrar el primo inmediatamente mayor
+        int primoMayor = numero + 1;
+        // si el numero no es primo entonces paso al siguiente
+        while (!esPrimo(primoMayor)) {
+            primoMayor++;
+        }
+
+        if (primoMenor > 2) {
+            primosCercanos.add(primoMenor);
+        }
+        primosCercanos.add(primoMayor);
 
         return primosCercanos;
     }
