@@ -28,13 +28,19 @@ public class ejercicio17 {
         imprimirMatriz(matrizA, A);
         ingresarValoresMatriz(matrizB, B);
         imprimirMatriz(matrizB, B);
-        multiplicarEscalar(matrizA);
-        sumaMatrices(matrizA, matrizB);
-        diferenciaMatrices(matrizA, matrizB);
-        productoMatrices(matrizA, matrizB);
+        multiplicarEscalar(matrizA);// a)
+        sumaMatrices(matrizA, matrizB);// b)
+        diferenciaMatrices(matrizA, matrizB);// c
+        productoMatrices(matrizA, matrizB);// d
 
     }
 
+    /**
+     * Metodo para multiplicar dos matrices
+     * 
+     * @param matrizA
+     * @param matrizB
+     */
     private static void productoMatrices(int[][] matrizA, int[][] matrizB) {
         // numero de columnas matriz A
         int CA = matrizA.length;
@@ -43,13 +49,17 @@ public class ejercicio17 {
         int[][] producto = new int[CA][FB];
         if (CA == FB) {
             for (int i = 0; i < matrizA.length; i++) {
-                for (int j = 0; j < matrizB[i].length; j++) {
-                    for (int j2 = 0; j2 < producto.length; j2++) {
-                        producto[i][j] = matrizA[][ + matrizB;
-                    };
-
+                for (int j = 0; j < matrizB[0].length; j++) {
+                    producto[i][j] = producto[0][0];
+                    for (int k = 0; k < matrizA[0].length; k++) {
+                        producto[i][j] += matrizA[i][k] * matrizB[k][j];
+                    }
                 }
             }
+            imprimirMatriz(producto, "Multiplicacion entre A y B");
+        } else {
+            System.out.println(
+                    "Las matrices no se pueden multiplicar porque las columnas de A y las filas de B no son iguales");
         }
 
     }
