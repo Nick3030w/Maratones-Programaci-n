@@ -11,18 +11,14 @@
  */
 public class ejercicio18 {
     public static void main(String[] args) {
-        int lunes[] = new int[3];
-        int martes[] = new int[3];
-        int miercoles[] = new int[3];
-        int jueves[] = new int[3];
-        int viernes[] = new int[3];
-        int sabado[] = new int[3];
-        int domingo[] = new int[3];
-        lunes[0] = 34;
-        lunes[1] = 21;
-        lunes[2] = 28;
-        martes[0] = 23;
-        miercoles[0] = 30;
-        jueves[0] = 
+        // double[][] temperaturas = {} Leer las temperaturas por teclado
+        double[] promedioPorDia = new double[7];
+        double sumaTotal = 0;
+        int totalRegistros = 0;
+
+        // Calcular promedio por dia
+        for (int i = 0; i < temperaturas.length; i++) {
+
+        }
     }
 }
