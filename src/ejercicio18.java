@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * 18. Un centro de investigación ambiental registra la temperatura 4 veces al
  * día durante los 7
@@ -11,18 +13,16 @@
  */
 public class ejercicio18 {
     public static void main(String[] args) {
-        int lunes[] = new int[3];
-        int martes[] = new int[3];
-        int miercoles[] = new int[3];
-        int jueves[] = new int[3];
-        int viernes[] = new int[3];
-        int sabado[] = new int[3];
-        int domingo[] = new int[3];
-        lunes[0] = 34;
-        lunes[1] = 21;
-        lunes[2] = 28;
-        martes[0] = 23;
-        miercoles[0] = 30;
-        jueves[0] = 
+        ArrayList<String> dias = new ArrayList<>();
+        dias.add("Lunes");
+        dias.add("Martes");
+        dias.add("Miercoles");
+        dias.add("Jueves");
+        dias.add("Viernes");
+        dias.add("Sabado");
+        dias.add("Domingo");
+        for (String dia : dias) {
+            List[] di = new List[];
+        }
     }
 }

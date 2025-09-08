@@ -1,1 +1,0 @@
-# maratones de programación
