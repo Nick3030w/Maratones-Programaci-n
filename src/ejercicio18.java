@@ -32,8 +32,6 @@ public class ejercicio18 {
 
         // Calcular promedio por dia
         for (int i = 0; i < temperaturas.length; i++) {
-
->>>>>>> origin/main:Nick/src/ejercicio18.java
         }
     }
 }
