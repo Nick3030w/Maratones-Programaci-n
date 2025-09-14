@@ -30,12 +30,25 @@ public class ejercicio24 {
 
     }
 
+    /**
+     * Método estatico que divide el número entre 2 si el numero ingresado es par
+     * 
+     * @param n
+     * @return
+     */
     public static int par(int n) {
         n = n / 2;
         System.out.println(n);
         return n;
     }
 
+    /**
+     * Método estatico que multiplica el número por 3 y le suma 1 si el numero
+     * ingresado es impar
+     * 
+     * @param n
+     * @return
+     */
     public static int impar(int n) {
         n = (n * 3) + 1;
         System.out.println(n);
