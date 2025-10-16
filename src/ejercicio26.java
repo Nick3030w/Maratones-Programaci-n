@@ -13,12 +13,26 @@ import java.util.Scanner;
 
 public class ejercicio26 {
     public static void main(String[] args) {
-        static Scanner lector = new Scanner(System.in);
-        int numOfValues = lector.nextInt();
-        int[] values = new int[numOfValues];
-        for (int i = 0; i < numOfValues; i++) {
-            values[i] = lector.nextInt();
+        Scanner lector = new Scanner(System.in);
+        String s = lector.nextLine();
+
+        int[] count = new int[26];
+        for (char c : s.toCharArray()) {
+            count[c - 'A']++;
         }
 
+        int contador = 0;
+        char caracter = 0;
+        for (int i = 0; i < count.length; i++) {
+            if (count[i] % 2 != 0) {
+                contador++;
+                caracter = (char) ('A' + i);
+            }
+        }
+
+        if (caracter > 1) {
+            System.out.println("NO SOLUTION");
+            return;
+        }
     }
 }
